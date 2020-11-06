@@ -1,0 +1,55 @@
+-- MySQL dump 10.13  Distrib 8.0.21, for macos10.15 (x86_64)
+--
+-- Host: localhost    Database: title
+-- ------------------------------------------------------
+-- Server version	8.0.21
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `title_episode`
+--
+
+DROP TABLE IF EXISTS `title_episode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `title_episode` (
+  `tconst` varchar(45) NOT NULL,
+  `parentTconst` varchar(45) DEFAULT NULL,
+  `seasonNumber` int DEFAULT NULL,
+  `episodeNumber` int DEFAULT NULL,
+  PRIMARY KEY (`tconst`),
+  CONSTRAINT `episode_basic_pk` FOREIGN KEY (`tconst`) REFERENCES `title_basic` (`tconst`),
+  CONSTRAINT `episode_rating+pk` FOREIGN KEY (`tconst`) REFERENCES `title_rating` (`tconst`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `title_episode`
+--
+
+LOCK TABLES `title_episode` WRITE;
+/*!40000 ALTER TABLE `title_episode` DISABLE KEYS */;
+INSERT INTO `title_episode` VALUES ('tt0041951','tt0041038',1,9),('tt0044093','tt0959862',1,6),('tt0045519','tt0989125',4,11),('tt0045960','tt0044284',2,3),('tt0046150','tt0341798',NULL,NULL),('tt0046855','tt0046643',1,4),('tt0046864','tt0989125',5,20),('tt0047852','tt0047745',1,15),('tt0047961','tt0989125',6,5),('tt0048067','tt0046587',2,20),('tt0048302','tt0047768',1,6),('tt0048371','tt0989125',6,11),('tt0048378','tt0047702',1,6),('tt0048462','tt0047702',1,3),('tt0048562','tt0047768',1,10),('tt0049473','tt0046593',1,20),('tt0049669','tt0048893',1,2),('tt0050031','tt0050013',1,4),('tt0050259','tt0048893',1,20),('tt0050318','tt0046593',4,1),('tt0050695','tt0046637',3,6),('tt0050988','tt0048893',1,16),('tt0051344','tt0050013',1,6),('tt0051523','tt0048893',3,2),('tt0051680','tt0161126',3,9),('tt0052236','tt0793361',1,2),('tt0052237','tt0793361',1,5),('tt0052238','tt0793361',1,4),('tt0052239','tt0793361',1,3),('tt0052240','tt0793361',1,1),('tt0052241','tt0793361',1,6),('tt0052647','tt4280486',1,8),('tt0052730','tt0320048',1,11),('tt0052866','tt0259792',NULL,NULL),('tt0052952','tt4280486',1,1),('tt0053303','tt0793361',2,3),('tt0053304','tt0793361',2,2),('tt0053305','tt0793361',2,1),('tt0053384','tt0052511',1,3),('tt0053405','tt0259792',NULL,NULL),('tt0053581','tt0048893',4,14),('tt0053722','tt0190181',1,6),('tt0053723','tt0190181',1,2),('tt0053827','tt0341798',4,17),('tt0053966','tt0048893',4,8),('tt0053974','tt0348926',1,5),('tt0054015','tt0051312',2,1),('tt0054028','tt0259792',NULL,NULL),('tt0054057','tt0190181',1,5);
+/*!40000 ALTER TABLE `title_episode` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-11-06  0:38:32
