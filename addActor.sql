@@ -14,9 +14,9 @@ BEGIN
     (nm003),
   INSERT INTO primaryProfession(primaryProfession),
   VALUES 
-    (actress),
-    (actress),
-    (actress),
+    (15, actress),
+    (16, actress),
+    (17, actress),
   INSERT INTO title_basic(tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runTimeMinutes),
   VALUES
     (tt001, "tvEpisode", "The Queen's Gambit", "The Queen's Gambit", 1, 2020, NULL, 52),
