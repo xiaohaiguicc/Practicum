@@ -27,12 +27,16 @@ BEGIN
     (5, tt001, nm001),
     (6, tt002, nm002),
     (7, tt003, nm003),
-  INSERT INTO title_akas(),
+  INSERT INTO title_akas(titleId, ordering, title, region, language, types, attributes, isOriginalTitle),
   VALUES 
-    (),
+    (tt001, 1, "The Queen's Gambit", US, english, NULL, NULL, 1),
+    (tt002, 3, "Glee", US, english, NULL, NULL, 1),
+    (tt003, 4, "Black Panther", US, english, NULL, NULL, 1),
   INSERT INTO principal(),
   VALUES 
-    (),
+    (tt001, 1, nm001, actress, NULL, "Beth Harmon"),
+    (tt001, 3, nm002, actress, NULL, "Quinn Fabray"),
+    (tt001, 4, nm002, actress, NULL, "Shuri");
 END //
 
 DELIMITER ;
