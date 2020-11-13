@@ -35,7 +35,7 @@ CREATE TABLE `genre` (
 
 LOCK TABLES `genre` WRITE;
 /*!40000 ALTER TABLE `genre` DISABLE KEYS */;
-INSERT INTO `genre` VALUES (1,'Documentary'),(2,'Short'),(3,'Animation'),(4,'Comedy'),(5,'Romance'),(6,'Sport'),(7,'Horror'),(8,'Drama'),(9,'Fantasy'),(10,'Western'),(11,'History'),(12,'Music'),(13,'Adventure'),(14,'Family'),(15,'Crime'),(16,'Thriller'),(17,'Mystery'),(18,'Musical');
+INSERT INTO `genre` VALUES (1,'Documentary'),(2,'Short'),(3,'Animation'),(4,'Comedy'),(5,'Romance'),(6,'Sport'),(7,'Horror'),(8,'Drama'),(9,'Fantasy'),(10,'Biography'),(11,'Music'),(12,'News'),(13,'War'),(14,'Crime'),(15,'Western'),(16,'Family'),(17,'Adventure'),(18,'History'),(19,'Action'),(20,'Mystery'),(21,'Sci-Fi'),(22,'Thriller'),(23,'Musical');
 /*!40000 ALTER TABLE `genre` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-06  0:38:33
+-- Dump completed on 2020-11-12 19:16:26

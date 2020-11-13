@@ -27,10 +27,10 @@ CREATE TABLE `title_name` (
   `tconst` varchar(45) DEFAULT NULL,
   `nconst` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`titleNameId`),
-  KEY `basic_pk_idx` (`tconst`),
-  KEY `name_pk_idx` (`nconst`),
-  CONSTRAINT `basic_pk` FOREIGN KEY (`tconst`) REFERENCES `title_basic` (`tconst`),
-  CONSTRAINT `name_pk` FOREIGN KEY (`nconst`) REFERENCES `name_basic` (`nconst`)
+  KEY `basic_pk` (`tconst`),
+  KEY `name_pk` (`nconst`),
+  CONSTRAINT `basic_pk` FOREIGN KEY (`tconst`) REFERENCES `title_basic` (`tconst`) ON DELETE CASCADE,
+  CONSTRAINT `name_pk` FOREIGN KEY (`nconst`) REFERENCES `name_basic` (`nconst`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +40,7 @@ CREATE TABLE `title_name` (
 
 LOCK TABLES `title_name` WRITE;
 /*!40000 ALTER TABLE `title_name` DISABLE KEYS */;
-INSERT INTO `title_name` VALUES (1,'tt0000009','nm0063086'),(2,'tt0000009','nm0085156'),(3,'tt0000009','nm0183823'),(4,'tt0000007','nm0183947');
+INSERT INTO `title_name` VALUES (1,'tt0000247','nm0002504'),(2,'tt0000472','nm0002615'),(3,'tt0000514','nm0016071'),(4,'tt0000541','nm0023121'),(5,'tt0000165','nm0024876'),(6,'tt0000417','nm0029244'),(7,'tt0000376','nm0051042'),(8,'tt0000009','nm0063086'),(9,'tt0000511','nm0065393'),(10,'tt0000486','nm0069325'),(11,'tt0000465','nm0076933'),(12,'tt0000230','nm0076933'),(13,'tt0000376','nm0078562'),(14,'tt0000165','nm0083196'),(15,'tt0000541','nm0084830'),(16,'tt0000566','nm0084830'),(17,'tt0000559','nm0084830'),(18,'tt0000009','nm0085156'),(19,'tt0000528','nm0085870'),(20,'tt0000376','nm0086082'),(21,'tt0000511','nm0094975'),(22,'tt0000335','nm0095714'),(23,'tt0000363','nm0095816'),(24,'tt0000546','nm0106151'),(25,'tt0000325','nm0112631'),(26,'tt0000305','nm0112631'),(27,'tt0000326','nm0112631'),(28,'tt0000439','nm0131750'),(29,'tt0000310','nm0151209'),(30,'tt0000309','nm0164281'),(31,'tt0000420','nm0164281'),(32,'tt0000498','nm0164281'),(33,'tt0000557','nm0166633'),(34,'tt0000574','nm0170118'),(35,'tt0000247','nm0177548'),(36,'tt0000580','nm0180860'),(37,'tt0000366','nm0182052'),(38,'tt0000221','nm0182052'),(39,'tt0000519','nm0183817'),(40,'tt0000009','nm0183823'),(41,'tt0000007','nm0183947'),(42,'tt0000574','nm0187697'),(43,'tt0000235','nm0194945'),(44,'tt0000011','nm0000001');
 /*!40000 ALTER TABLE `title_name` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-06  0:38:33
+-- Dump completed on 2020-11-12 19:16:27

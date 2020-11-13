@@ -35,7 +35,7 @@ CREATE TABLE `primaryProfession` (
 
 LOCK TABLES `primaryProfession` WRITE;
 /*!40000 ALTER TABLE `primaryProfession` DISABLE KEYS */;
-INSERT INTO `primaryProfession` VALUES (1,'soundtrack'),(2,'actor'),(3,'miscellaneous'),(4,'actress'),(5,'music_department'),(6,'writer'),(7,'director'),(8,'producer'),(9,'make_up_department'),(10,'composer'),(11,'assistant_director'),(12,'camera_department'),(13,'cinematographer'),(14,'costume_designer');
+INSERT INTO `primaryProfession` VALUES (1,'soundtrack'),(2,'actor'),(3,'miscellaneous'),(4,'actress'),(5,'music_department'),(6,'writer'),(7,'director'),(8,'producer'),(9,'make_up_department'),(10,'composer'),(11,'assistant_director'),(12,'camera_department'),(13,'editor'),(14,'cinematographer'),(15,'casting_director'),(16,'script_department'),(17,'art_director'),(18,'stunts'),(19,'editorial_department'),(20,'costume_department'),(21,'animation_department'),(22,'art_department'),(23,'executive'),(24,'special_effects'),(25,'costume_designer');
 /*!40000 ALTER TABLE `primaryProfession` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-06  0:38:38
+-- Dump completed on 2020-11-12 19:16:31

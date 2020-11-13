@@ -35,5 +35,5 @@ INSERT INTO `title`.`title_basic`
 `endYear`,
 `runTimeMinutes`)
 VALUES
-('tt0000011', 'movie', 'test', 'test1', 0, 1990, NULL, 3);
-INSERT INTO title.title_name (`titleNameId`,`tconst`, `nconst`) VALUES(5, 'tt0000011', 'nm0183823');
+('tt0000011', 'movie', 'Mulan', 'Mulan', 0, 2020, NULL, 120);
+INSERT INTO title.title_name (`titleNameId`,`tconst`, `nconst`) VALUES(44, 'tt0000011', 'nm0000001');

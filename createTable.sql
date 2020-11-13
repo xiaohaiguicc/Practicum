@@ -48,7 +48,8 @@ CREATE TABLE IF NOT EXISTS `title`.`director` (
   PRIMARY KEY (`nconst`),
   CONSTRAINT `name_d_pk`
     FOREIGN KEY (`nconst`)
-    REFERENCES `title`.`name_basic` (`nconst`))
+    REFERENCES `title`.`name_basic` (`nconst`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -92,14 +93,14 @@ CREATE TABLE IF NOT EXISTS `title`.`name_basic_primaryProfession` (
   `nconst` VARCHAR(45) NULL DEFAULT NULL,
   `primaryProfessionId` INT NULL DEFAULT NULL,
   PRIMARY KEY (`namePrimaryProfessionId`),
-  INDEX `name_pri_pk_idx` (`nconst` ASC) VISIBLE,
-  INDEX `pri_pk_idx` (`primaryProfessionId` ASC) VISIBLE,
   CONSTRAINT `name_pri_pk`
     FOREIGN KEY (`nconst`)
-    REFERENCES `title`.`name_basic` (`nconst`),
+    REFERENCES `title`.`name_basic` (`nconst`)
+    ON DELETE CASCADE,
   CONSTRAINT `pri_pk`
     FOREIGN KEY (`primaryProfessionId`)
-    REFERENCES `title`.`primaryProfession` (`primaryProfessionId`))
+    REFERENCES `title`.`primaryProfession` (`primaryProfessionId`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -126,6 +127,32 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
+-- Table `title`.`principal`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `title`.`principal` ;
+
+CREATE TABLE IF NOT EXISTS `title`.`principal` (
+  `tconst` VARCHAR(45) NOT NULL,
+  `ordering` INT NOT NULL,
+  `nconst` VARCHAR(45) NULL DEFAULT NULL,
+  `category` VARCHAR(200) NULL DEFAULT NULL,
+  `job` VARCHAR(200) NULL DEFAULT NULL,
+  `characters` VARCHAR(200) NULL DEFAULT NULL,
+  PRIMARY KEY (`tconst`, `ordering`),
+  CONSTRAINT `principal_name_pk`
+    FOREIGN KEY (`nconst`)
+    REFERENCES `title`.`name_basic` (`nconst`)
+    ON DELETE CASCADE,
+  CONSTRAINT `title_principal_pk`
+    FOREIGN KEY (`tconst`)
+    REFERENCES `title`.`title_basic` (`tconst`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
 -- Table `title`.`title_akas`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `title`.`title_akas` ;
@@ -142,32 +169,8 @@ CREATE TABLE IF NOT EXISTS `title`.`title_akas` (
   PRIMARY KEY (`titleId`, `ordering`),
   CONSTRAINT `akas_pk`
     FOREIGN KEY (`titleId`)
-    REFERENCES `title`.`title_basic` (`tconst`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `title`.`principal`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `title`.`principal` ;
-
-CREATE TABLE IF NOT EXISTS `title`.`principal` (
-  `tconst` VARCHAR(45) NOT NULL,
-  `ordering` INT NOT NULL,
-  `nconst` VARCHAR(45) NULL DEFAULT NULL,
-  `category` VARCHAR(200) NULL DEFAULT NULL,
-  `job` VARCHAR(200) NULL DEFAULT NULL,
-  `characters` VARCHAR(200) NULL DEFAULT NULL,
-  PRIMARY KEY (`tconst`, `ordering`),
-  INDEX `principal_name_pk_idx` (`nconst` ASC) VISIBLE,
-  CONSTRAINT `akas_principal_pk`
-    FOREIGN KEY (`tconst` , `ordering`)
-    REFERENCES `title`.`title_akas` (`titleId` , `ordering`),
-  CONSTRAINT `principal_name_pk`
-    FOREIGN KEY (`nconst`)
-    REFERENCES `title`.`name_basic` (`nconst`))
+    REFERENCES `title`.`title_basic` (`tconst`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -196,29 +199,14 @@ CREATE TABLE IF NOT EXISTS `title`.`title_director` (
   `tconst` VARCHAR(45) NULL DEFAULT NULL,
   `nconst` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`directorId`),
-  INDEX `director_pk_idx` (`nconst` ASC) VISIBLE,
-  INDEX `title_director_pk_idx` (`tconst` ASC) VISIBLE,
   CONSTRAINT `director_pk`
     FOREIGN KEY (`nconst`)
-    REFERENCES `title`.`director` (`nconst`),
+    REFERENCES `title`.`director` (`nconst`)
+    ON DELETE CASCADE,
   CONSTRAINT `title_director_pk`
     FOREIGN KEY (`tconst`)
-    REFERENCES `title`.`title_crew` (`tconst`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `title`.`title_rating`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `title`.`title_rating` ;
-
-CREATE TABLE IF NOT EXISTS `title`.`title_rating` (
-  `tconst` VARCHAR(45) NOT NULL,
-  `averageRating` DOUBLE NULL DEFAULT NULL,
-  `numVotes` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`tconst`))
+    REFERENCES `title`.`title_crew` (`tconst`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -237,10 +225,8 @@ CREATE TABLE IF NOT EXISTS `title`.`title_episode` (
   PRIMARY KEY (`tconst`),
   CONSTRAINT `episode_basic_pk`
     FOREIGN KEY (`tconst`)
-    REFERENCES `title`.`title_basic` (`tconst`),
-  CONSTRAINT `episode_rating+pk`
-    FOREIGN KEY (`tconst`)
-    REFERENCES `title`.`title_rating` (`tconst`))
+    REFERENCES `title`.`title_basic` (`tconst`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -256,14 +242,14 @@ CREATE TABLE IF NOT EXISTS `title`.`title_genre` (
   `tconst` VARCHAR(45) NULL DEFAULT NULL,
   `genreId` INT NULL DEFAULT NULL,
   PRIMARY KEY (`titleGenreId`),
-  INDEX `title_genre_pk_idx` (`tconst` ASC) VISIBLE,
-  INDEX `genre_pk_idx` (`genreId` ASC) VISIBLE,
   CONSTRAINT `genre_pk`
     FOREIGN KEY (`genreId`)
-    REFERENCES `title`.`genre` (`genreId`),
+    REFERENCES `title`.`genre` (`genreId`)
+    ON DELETE CASCADE,
   CONSTRAINT `title_genre_pk`
     FOREIGN KEY (`tconst`)
-    REFERENCES `title`.`title_basic` (`tconst`))
+    REFERENCES `title`.`title_basic` (`tconst`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -279,14 +265,33 @@ CREATE TABLE IF NOT EXISTS `title`.`title_name` (
   `tconst` VARCHAR(45) NULL DEFAULT NULL,
   `nconst` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`titleNameId`),
-  INDEX `basic_pk_idx` (`tconst` ASC) VISIBLE,
-  INDEX `name_pk_idx` (`nconst` ASC) VISIBLE,
   CONSTRAINT `basic_pk`
     FOREIGN KEY (`tconst`)
-    REFERENCES `title`.`title_basic` (`tconst`),
+    REFERENCES `title`.`title_basic` (`tconst`)
+    ON DELETE CASCADE,
   CONSTRAINT `name_pk`
     FOREIGN KEY (`nconst`)
-    REFERENCES `title`.`name_basic` (`nconst`))
+    REFERENCES `title`.`name_basic` (`nconst`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `title`.`title_rating`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `title`.`title_rating` ;
+
+CREATE TABLE IF NOT EXISTS `title`.`title_rating` (
+  `tconst` VARCHAR(45) NOT NULL,
+  `averageRating` DOUBLE NULL DEFAULT NULL,
+  `numVotes` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`tconst`),
+  CONSTRAINT `basic_rating_pk`
+    FOREIGN KEY (`tconst`)
+    REFERENCES `title`.`title_basic` (`tconst`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -305,7 +310,8 @@ CREATE TABLE IF NOT EXISTS `title`.`writer` (
   PRIMARY KEY (`nconst`),
   CONSTRAINT `name_w_pk`
     FOREIGN KEY (`nconst`)
-    REFERENCES `title`.`name_basic` (`nconst`))
+    REFERENCES `title`.`name_basic` (`nconst`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -321,15 +327,14 @@ CREATE TABLE IF NOT EXISTS `title`.`title_writer` (
   `tconst` VARCHAR(45) NULL DEFAULT NULL,
   `nconst` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`writerId`),
-  INDEX `join_writer_pk_idx` (`nconst` ASC) VISIBLE,
-  INDEX `join_writer_idx` (`nconst` ASC) VISIBLE,
-  INDEX `title_writer_pk_idx` (`tconst` ASC) VISIBLE,
   CONSTRAINT `title_writer_pk`
     FOREIGN KEY (`tconst`)
-    REFERENCES `title`.`title_crew` (`tconst`),
+    REFERENCES `title`.`title_crew` (`tconst`)
+    ON DELETE CASCADE,
   CONSTRAINT `writer_pk`
     FOREIGN KEY (`nconst`)
-    REFERENCES `title`.`writer` (`nconst`))
+    REFERENCES `title`.`writer` (`nconst`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;

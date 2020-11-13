@@ -27,11 +27,10 @@ CREATE TABLE `title_writer` (
   `tconst` varchar(45) DEFAULT NULL,
   `nconst` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`writerId`),
-  KEY `join_writer_pk_idx` (`nconst`),
-  KEY `join_writer_idx` (`nconst`),
-  KEY `title_writer_pk_idx` (`tconst`),
-  CONSTRAINT `title_writer_pk` FOREIGN KEY (`tconst`) REFERENCES `title_crew` (`tconst`),
-  CONSTRAINT `writer_pk` FOREIGN KEY (`nconst`) REFERENCES `writer` (`nconst`)
+  KEY `title_writer_pk` (`tconst`),
+  KEY `writer_pk` (`nconst`),
+  CONSTRAINT `title_writer_pk` FOREIGN KEY (`tconst`) REFERENCES `title_crew` (`tconst`) ON DELETE CASCADE,
+  CONSTRAINT `writer_pk` FOREIGN KEY (`nconst`) REFERENCES `writer` (`nconst`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-06  0:38:36
+-- Dump completed on 2020-11-12 19:16:30

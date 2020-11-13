@@ -27,10 +27,10 @@ CREATE TABLE `title_director` (
   `tconst` varchar(45) DEFAULT NULL,
   `nconst` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`directorId`),
-  KEY `director_pk_idx` (`nconst`),
-  KEY `title_director_pk_idx` (`tconst`),
-  CONSTRAINT `director_pk` FOREIGN KEY (`nconst`) REFERENCES `director` (`nconst`),
-  CONSTRAINT `title_director_pk` FOREIGN KEY (`tconst`) REFERENCES `title_crew` (`tconst`)
+  KEY `director_pk` (`nconst`),
+  KEY `title_director_pk` (`tconst`),
+  CONSTRAINT `director_pk` FOREIGN KEY (`nconst`) REFERENCES `director` (`nconst`) ON DELETE CASCADE,
+  CONSTRAINT `title_director_pk` FOREIGN KEY (`tconst`) REFERENCES `title_crew` (`tconst`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-06  0:38:40
+-- Dump completed on 2020-11-12 19:16:35
