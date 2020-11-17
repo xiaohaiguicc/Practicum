@@ -2,20 +2,18 @@ DELIMITER //
 
 CREATE PROCEDURE deleteActor()
 BEGIN
-  DELETE FROM name_basic,
-  WHERE primaryName = "Anya Taylor Joy" OR "Dianna Agron" OR "Letitia Wright";
-END //
-
-DELIMITER ;
-
-DELIMITER //
-
-CREATE PROCEDURE deleteActor()
-BEGIN
-  DELETE FROM name_basic,
-  WHERE age > 10,
-  ORDER BY birthYear,
-  LIMIT 5;
+  DELETE FROM name_basic
+  WHERE primaryName = "Letitia Wright" OR "Ingmar Bergman";
+  
+  DELETE FROM primaryProfession
+  WHERE primaryProfessionId = 55;
+  
+  DELETE FROM title_basic
+  WHERE tconst = 'tt001ss';
+  
+  DELETE FROM title_name
+  WHERE titleNameId = 33;
+  
 END //
 
 DELIMITER ;
